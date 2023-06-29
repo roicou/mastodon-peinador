@@ -17,9 +17,9 @@ class AenaService {
     private readonly TWO_DAYS = "si";
     private readonly AIRPORT = config.airport.iata;
     // https://www.aena.es/sites/Satellite?pagename=AENA_ConsultarVuelos&airport=VGO&flightType=S&dosDias=si
-    private readonly DEPARTURES_URI = `${this.BASE_URL}${this.PREFIX}${this.ENDPOINT}?pagename=${this.PAGENAME}&airport=${this.AIRPORT}&flightType=${this.FLIGHT_TYPE_DEPARTURES}&dosDias=${this.TWO_DAYS}`;
+    private readonly DEPARTURES_URI = `${this.BASE_URL}${this.PREFIX}${this.ENDPOINT}?pagename=${this.PAGENAME}&airport=${this.AIRPORT}&flightType=${this.FLIGHT_TYPE_DEPARTURES}`;
     // https://www.aena.es/sites/Satellite?pagename=AENA_ConsultarVuelos&airport=VGO&flightType=L&dosDias=si
-    private readonly ARRIVALS_URI = `${this.BASE_URL}${this.PREFIX}${this.ENDPOINT}?pagename=${this.PAGENAME}&airport=${this.AIRPORT}&flightType=${this.FLIGHT_TYPE_ARRIVALS}&dosDias=${this.TWO_DAYS}`;
+    private readonly ARRIVALS_URI = `${this.BASE_URL}${this.PREFIX}${this.ENDPOINT}?pagename=${this.PAGENAME}&airport=${this.AIRPORT}&flightType=${this.FLIGHT_TYPE_ARRIVALS}`;
 
     /**
      * make a post petition to Aena and return flights
