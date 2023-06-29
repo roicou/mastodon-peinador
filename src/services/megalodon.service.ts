@@ -22,13 +22,13 @@ class MegalodonService {
      */
     public async publishFlights() {
         const first_words = [
-            '¡Atención!',
-            '¡Alerta!',
-            '¡Información!',
-            '¡Noticia!',
-            '¡Última hora!',
-            '¡Exclusiva!',
-            '¡Atención, atención!',
+            'Atención!',
+            'Alerta!',
+            'Información!',
+            'Noticia!',
+            'Última hora!',
+            'Exclusiva!',
+            'Atención, atención!',
         ];
         const second_words = [
             'O voo',
