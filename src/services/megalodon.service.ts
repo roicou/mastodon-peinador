@@ -61,11 +61,11 @@ class MegalodonService {
         }, {});
         logger.debug('grouped_flights', JSON.stringify(grouped_flights, null, 2));
         for (const key in grouped_flights) {
-            const first_word = first_words[Math.floor(Math.random() * first_words.length)];
+            //const first_word = first_words[Math.floor(Math.random() * first_words.length)];
             const second_word = second_words[Math.floor(Math.random() * second_words.length)];
             const third_word = third_words[Math.floor(Math.random() * third_words.length)];
 
-            let main_text = `${first_word} ${second_word} de `;// ${third_word} `
+            let main_text = /*`${first_word} */`${second_word} de `;// ${third_word} `
             // for (const flight of grouped_flights[key]) {
             //     main_text += ` ${flight.companyName} (${flight.companyCode}${flight.flightNumber}),`
 
@@ -98,10 +98,12 @@ class MegalodonService {
             main_text += `\nhttps://flightaware.com/live/flight/${flight.companyCode}${flight.flightNumber}`
             logger.info('Text to toot:\n' + main_text);
             try {
-                await this.client.postStatus(main_text, {
-                    visibility: 'public',
-                    scheduled_at: DateTime.local().toISO()
-                });
+                //if (!config.debug) {
+                    await this.client.postStatus(main_text, {
+                        visibility: "public",
+                        sensitive: false,
+                    });
+                //}
             } catch (error) {
                 logger.error(error);
             }

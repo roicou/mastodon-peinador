@@ -83,7 +83,7 @@ class FlightService {
      */
     public async getFlightsToPublish() {
         const fromDate = DateTime.local().startOf('minute').toJSDate();
-        const toDate = DateTime.local().endOf('minute').toJSDate();
+        const toDate = DateTime.local()/*.plus({minutes: 120})*/.endOf('minute').toJSDate(); //! 1 minute
         const flights = await flightModel.aggregate([
             {
                 $match: {
