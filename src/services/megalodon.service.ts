@@ -9,6 +9,7 @@ Settings.defaultZone = config.timezone;
 
 class MegalodonService {
     private client: MegalodonInterface;
+    private lastPost: DateTime = null;
     /**
      * Start the client
      * @param client 
@@ -99,10 +100,12 @@ class MegalodonService {
             logger.info('Text to toot:\n' + main_text);
             try {
                 //if (!config.debug) {
+                    const now = DateTime.local();
                     await this.client.postStatus(main_text, {
-                        visibility: "public",
+                        visibility: (this.lastPost && this.lastPost < now ? "public" : "unlisted"),
                         sensitive: false,
                     });
+                    this.lastPost = now;
                 //}
             } catch (error) {
                 logger.error(error);
