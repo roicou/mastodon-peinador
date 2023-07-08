@@ -101,11 +101,15 @@ class MegalodonService {
             try {
                 //if (!config.debug) {
                     const now = DateTime.local();
+                    let visibility: "unlisted" | "public" = "unlisted";
+                    if(!this.lastPost || this.lastPost < now.minus({hour: 1})) {
+                        visibility = "public";
+                        this.lastPost = now;
+                    }
                     await this.client.postStatus(main_text, {
-                        visibility: (this.lastPost && this.lastPost > now.minus({hour: 1}) ? "unlisted" : "public"),
+                        visibility: visibility,
                         sensitive: false,
                     });
-                    this.lastPost = now;
                 //}
             } catch (error) {
                 logger.error(error);
