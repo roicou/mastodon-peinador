@@ -98,6 +98,7 @@ class MegalodonService {
             }
             main_text += `\nhttps://flightaware.com/live/flight/${flight.companyCode}${flight.flightNumber}`
             logger.info('Text to toot:\n' + main_text);
+            
             try {
                 //if (!config.debug) {
                     const now = DateTime.local();
@@ -106,6 +107,7 @@ class MegalodonService {
                         visibility = "public";
                         this.lastPost = now;
                     }
+                    logger.info('Visibility:', visibility);
                     await this.client.postStatus(main_text, {
                         visibility: visibility,
                         sensitive: false,
