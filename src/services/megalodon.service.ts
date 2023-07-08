@@ -102,7 +102,7 @@ class MegalodonService {
                 //if (!config.debug) {
                     const now = DateTime.local();
                     await this.client.postStatus(main_text, {
-                        visibility: (this.lastPost && this.lastPost < now ? "public" : "unlisted"),
+                        visibility: (this.lastPost && this.lastPost > now.minus({hour: 1}) ? "unlisted" : "public"),
                         sensitive: false,
                     });
                     this.lastPost = now;
