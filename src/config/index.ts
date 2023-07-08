@@ -29,6 +29,7 @@ export default {
         client_secret: process.env.MASTODON_CLIENT_SECRET,
         access_token: process.env.MASTODON_ACCESS_TOKEN,
         api_url: process.env.MASTODON_API_URL,
+        public_minutes: parseInt(process.env.MASTODON_PUBLIC_MINUTES) || 120,
     },
     /**
      * airport config

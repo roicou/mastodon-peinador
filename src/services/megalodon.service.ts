@@ -103,7 +103,7 @@ class MegalodonService {
                 //if (!config.debug) {
                     const now = DateTime.local();
                     let visibility: "unlisted" | "public" = "unlisted";
-                    if(!this.lastPost || this.lastPost < now.minus({hour: 1})) {
+                    if(!this.lastPost || this.lastPost < now.minus({minutes: config.mastodon.public_minutes})) {
                         visibility = "public";
                         this.lastPost = now;
                     }
