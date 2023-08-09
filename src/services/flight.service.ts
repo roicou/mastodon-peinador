@@ -99,8 +99,10 @@ class FlightService {
         // set published to true
         await flightModel.updateMany({ _id: { $in: flights.map((flight: FlightInterface) => flight._id) } }, { published: true });
         flights.forEach((flight: FlightInterface) => {
-            if(flight.companyCode === 'NT' && flight.companyName === 'Binter Canarias') {
-                flight.companyCode = 'IBB';
+            switch(flight.companyCode) {
+                case 'NT':
+                    flight.companyCode = 'IBB';
+                    break;
             }
         });
         return flights;
